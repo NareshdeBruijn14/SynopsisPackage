@@ -4,18 +4,27 @@
 #'
 #' @param file_path dataset or path to file
 #'
-#' @return import and summary of dataset
+#' @return summary of the imported data
 #' @export
 #'
 #' @examples
-#' # synopsis(./data/species.csv)
+#'
+#' # results <- synopsis("./data/species.csv")
+#' # print(results$data)
+#' # print(results$class)
+#' # print(results$dim)
+#' # print(results$str)
+#' # print(results$typeof)
+#' # print(results$names)
+#' # print(results$NA_info)
+#' # print(resluts)
 #'
 
 # dependencies
 library(readxl)
 library(tools)
 library(tidyverse)
-library(readxl)
+
 
 
 # function synopsis

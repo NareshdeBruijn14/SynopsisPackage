@@ -64,5 +64,15 @@ synopsis <- function(file_path) {
     ))
     } else return(NULL)
 }
-synopsis("../DSFB2_portfolio/data/CE.LIQ.FLOW.062_Tidydata.xlsx")
 
+synopsis("./data/species.csv")
+
+results <- synopsis("./data/species.csv")
+
+print(results$data)
+print(results$class)
+print(results$dim)
+print(results$str)
+print(results$typeof)
+print(results$names)
+print(results$NA_info)

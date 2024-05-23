@@ -7,13 +7,22 @@
 \item{file_path}{dataset or path to file}
 }
 \value{
-import and summary of dataset
+summary of the imported data
 }
 \description{
 Check and import a dataset, and provide a summary after importing the dataset
 }
 \examples{
-# synopsis(./data/species.csv)
+
+# results <- synopsis("./data/species.csv")
+# print(results$data)
+# print(results$class)
+# print(results$dim)
+# print(results$str)
+# print(results$typeof)
+# print(results$names)
+# print(results$NA_info)
+# print(resluts)
 
 }
 \author{

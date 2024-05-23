@@ -1,32 +1,38 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # SynopsisPackage
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `SynopsisPackage` is to identify the data format and import
-the dataset if the correct data format is provided. After successfully
-importing the dataset, the package will provide a comprehensive summary
-that includes the following metadata:
+The goal of `SynopsisPackage` is to identify the data format and import the dataset if the correct data format is provided. After successfully importing the dataset, the package will provide a comprehensive summary that includes the following metadata:
 
 - **Class**: The class of the dataset.
 - **Data Type**: The type of the dataset.
 - **Dimensions**: The dimensions of the dataset (rows and columns).
 - **Structure**: The structure of the dataset.
 - **Column Names**: The names of the columns in the dataset.
-- **Missing Values**: Detailed information about missing values in the
-  dataset.
-- **Imported Dataset**: The dataset itself, loaded into your
-  environment.
+- **Missing Values**: Detailed information about missing values in the dataset.
+- **Imported Dataset**: The dataset itself, loaded into your environment.
 
-By using this package, users can easily identify, read, and understand
-the basic structure and characteristics of their data.
+By using this package, users can easily identify, read, and understand the basic structure and characteristics of their data.
 
 ## Installation
 
-``` r
+```{r dependencies}
 # install.packages("usethis")
 # install.packages("devtools")
 # install.packages("readxl)
@@ -34,8 +40,8 @@ the basic structure and characteristics of their data.
 # install.packages("tidyverse)
 ```
 
-You can install the development version of SynopsisPackage from
-[GitHub](https://github.com/) with:
+
+You can install the development version of SynopsisPackage from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -47,7 +53,7 @@ library(synopsis)
 
 This is a basic example which shows you how to solve a common problem:
 
-``` r
+```{r example}
 # library(SynopsisPackage)
 # 
 # synopsis("./data/species.csv")
@@ -61,4 +67,7 @@ This is a basic example which shows you how to solve a common problem:
 # print(results$typeof) # gives the data type(s) 
 # print(results$names) # gives the header names of the dataset (if present)
 # print(results$NA_info) # gives a list of information about the missing values in the dataset(if present)
+
 ```
+
+
