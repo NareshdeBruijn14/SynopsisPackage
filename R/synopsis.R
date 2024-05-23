@@ -7,6 +7,8 @@
 #' @return import and summary of dataset
 #' @export
 #'
+#' @examples
+#' # synopsis(./data/species.csv)
 #'
 
 # dependencies

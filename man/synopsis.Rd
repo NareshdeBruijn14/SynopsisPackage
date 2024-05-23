@@ -12,6 +12,10 @@ import and summary of dataset
 \description{
 Check and import a dataset, and provide a summary after importing the dataset
 }
+\examples{
+# synopsis(./data/species.csv)
+
+}
 \author{
 Naresh de Bruijn
 }
