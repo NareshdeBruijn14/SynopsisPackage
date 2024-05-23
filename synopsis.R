@@ -11,37 +11,42 @@ synopsis <- function(file_path) {
   data <- NULL
 
   # Check file extension
-  file_extension <- tolower(file_ext(file_path))
+  file_extension <- tolower(tools::file_ext(file_path))
 
   # Try reading as CSV
   if (file_extension == "csv") {
-    try({
-      data <- read.csv(file_path)
-      return(data)
-    }, silent = TRUE)
+    data <- tryCatch({
+      read.csv(file_path)
+    }, error = function(e) NULL)
+
 
   # Try reading as Excel
-  }if (file_extension %in% c("xls", "xlsx")) {
-    try({
-      data <- readxl::read_excel(file_path)
-      return(data)
-    }, silent = TRUE)
+  }else if (file_extension %in% c("xls", "xlsx")) {
+    data <- tryCatch({
+      readxl::read_excel(file_path)
+
+    }, error = function(e) NULL)
 
   # Try reading as RDS
-  }if (file_extension == "rds") {
-    try({
-      data <- readRDS(file_path)
-      return(data)
-    }, silent = TRUE)
+  }else if (file_extension == "rds") {
+    data <- tryCatch({
+      readRDS(file_path)
+
+    }, error = function(e) NULL)
 
   # Try reading as TSV
-  }if (file_extension == "tsv") {
-    try({
-      data <- read.table(file_path, sep = "\t", header = TRUE)
-      return(data)
-    }, silent = TRUE)
+  }else if (file_extension == "tsv") {
+    data <- tryCatch({
+      read.table(file_path, sep = "\t", header = TRUE)
 
-  }if (!is.null(data)) {
+    }, error = function(e) NULL)
+
+
+  }else
+  # If none of the methods worked. return error message
+  return("File format not recognized or file could not be read.")
+
+  if (!is.null(data)) {
     NA_info <- list(
       NA_present = any(is.na(data)),
       NA_count = sum(is.na(data)),
@@ -49,17 +54,15 @@ synopsis <- function(file_path) {
     )
 
     return(list(
+      data = data,
       class = class(data),
       dim = dim(data),
-      str = str(data),
+      str = capture.output(str(data)),
       typeof = typeof(data),
       names = names(data),
       NA_info = NA_info
     ))
-
-  }else {
-  # If none of the methods worked. return error message
-  stop("File format not recognized or file could not be read.")
-
-  }
+    } else return(NULL)
 }
+synopsis("../DSFB2_portfolio/data/CE.LIQ.FLOW.062_Tidydata.xlsx")
+
